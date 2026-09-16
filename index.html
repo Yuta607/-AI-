@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🏸 Badminton Coach AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>🏸 Badminton Coach AI</h1>
+  <p class="sub">動画を選ぶだけ。まずは「分析画面」の試作品です。</p>
+
+  <section class="card">
+    <label class="upload">
+      <input id="video" type="file" accept="video/*">
+      <span>📹 動画を選ぶ</span>
+    </label>
+    <video id="preview" controls playsinline hidden></video>
+    <button id="analyze" disabled>分析スタート</button>
+  </section>
+
+  <section id="result" class="card result" hidden>
+    <h2>🏸 分析結果</h2>
+    <h3>👍 良いところ</h3>
+    <ul>
+      <li>構えを大きく崩さず、次のプレーに備えようとしています。</li>
+      <li>シャトルに合わせて足を動かせています。</li>
+    </ul>
+    <h3>🔥 改善ポイント TOP3</h3>
+    <ol>
+      <li><b>打った後の戻り</b> — 打球後すぐに次へ動ける準備を作る。</li>
+      <li><b>相手の打点に合わせた構え</b> — 相手が打つ瞬間に準備する。</li>
+      <li><b>最初の一歩</b> — 反応したら最初の一歩を素早く出す。</li>
+    </ol>
+    <h3>🎯 練習メニュー</h3>
+    <ul>
+      <li>シャドーフットワーク：30秒 × 3セット</li>
+      <li>スプリットステップ＋4方向反応：10回 × 3セット</li>
+      <li>1歩ダッシュ：左右・前後 各10回</li>
+    </ul>
+    <p class="note">※これはUI試作品です。現段階では動画そのものをAI解析しているわけではありません。</p>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
