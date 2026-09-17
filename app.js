@@ -21,34 +21,39 @@ input.addEventListener("change", () => {
 });
 
 analyze.addEventListener("click", async () => {
-  analyze.textContent = "サーバーに接続中…";
+  const file = input.files[0];
+
+  if (!file) {
+    alert("先に動画を選んでください。");
+    return;
+  }
+
+  analyze.textContent = "動画を送信中…";
   analyze.disabled = true;
 
   try {
+    const formData = new FormData();
+    formData.append("video", file);
+
     const response = await fetch(`${SERVER_URL}/analyze`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        filename: input.files[0]?.name || "video"
-      })
+      body: formData
     });
 
     const data = await response.json();
 
     result.hidden = false;
 
-    result.querySelector("h2").textContent = "🏸 AI分析結果";
     result.querySelector(".note").textContent =
-      data.message || "サーバーから正常に返事がありました！";
+      data.message || "動画をサーバーで受け取りました！";
 
     result.scrollIntoView({ behavior: "smooth" });
 
   } catch (error) {
     result.hidden = false;
+
     result.querySelector(".note").textContent =
-      "サーバーへの接続に失敗しました。";
+      "動画の送信に失敗しました。";
 
     console.error(error);
   }
