@@ -43,7 +43,6 @@ analyze.addEventListener("click", async () => {
     const data = await response.json();
 
     result.hidden = false;
-
     result.querySelector(".note").textContent =
       data.message || "動画をサーバーで受け取りました！";
 
@@ -51,11 +50,8 @@ analyze.addEventListener("click", async () => {
 
   } catch (error) {
     result.hidden = false;
-
     result.querySelector(".note").textContent =
       "動画の送信に失敗しました。";
-
-    console.error(error);
   }
 
   analyze.textContent = "もう一度分析";
